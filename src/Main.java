@@ -11,6 +11,8 @@ public class Main {
             System.out.println("0. Salir");
             System.out.println("1. Ejercicio1 ficheros");
             System.out.println("2. Ejercicio1 ficheros NIO");
+            System.out.println("3. Ejercicio2 ficheros");
+            System.out.println("4. Ejercicio2 ficheros NIO");
 
             opcion = libs.Leer.pedirCadena("Introduce una opción");
             switch (opcion) {
@@ -26,6 +28,9 @@ public class Main {
                 }
                 case "3" -> {
                     code.ej2.listarDir();
+                }
+                case "4" -> {
+
                 }
                 default -> {
                     libs.Leer.clearScreen();
