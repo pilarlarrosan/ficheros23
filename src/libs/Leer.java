@@ -18,22 +18,19 @@ public class Leer {
      * @return dato - cadena introducida por teclado
      */
     static public String pedirCadena(final String texto) {
+        BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
         String dato = "";
         boolean error = true;
-        try(BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in))) {
-
-            while (error) {
-                try {
-                    dato = "";
-                    mostrarEnPantalla(texto);
-                    dato = dataIn.readLine();
-                    error = false;
-                } catch (IOException e) {
-                    mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
-                }
+        while (error) {
+            try {
+                dato = "";
+                mostrarEnPantalla(texto);
+                dato = dataIn.readLine();
+                error = false;
+            } catch (IOException e) {
+                mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
+                error = true;
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
         return dato;
     }
@@ -44,10 +41,11 @@ public class Leer {
      * @return dato - cadena introducida por teclado
      */
     static public String pedirCadena(final String texto, String regex) {
+        BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
         String dato = "";
         boolean error = true;
         while (error) {
-            try (BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in))){
+            try {
                 dato = "";
                 mostrarEnPantalla(texto);
                 dato = dataIn.readLine();
@@ -75,17 +73,20 @@ public class Leer {
      * @return dato - Entero tecleado
      */
     static public int pedirEntero(final String texto) {
+        BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
         int dato = 0;
         boolean error = true;
         while (error) {
-            try (BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in))){
+            try {
                 mostrarEnPantalla(texto);
                 dato = Integer.parseInt(dataIn.readLine());
                 error = false;
             } catch (IOException e) {
                 mostrarEnPantalla("Vuelve a introducir el dato, por favor.");
+                error = true;
             } catch (NumberFormatException e) {
                 mostrarEnPantalla("El dato introducido no es entero.");
+                error = true;
             }
         }
         return dato;
@@ -97,6 +98,7 @@ public class Leer {
      * @return dato - Entero tecleado
      */
     static public Integer pedirEntero(final String texto, String regex) {
+        BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
         Integer dato = null;
         boolean error = true;
         String datoT = "";
@@ -104,7 +106,7 @@ public class Leer {
             regex = "^-?\\d+$";
         }
         while (error) {
-            try (BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in))){
+            try {
                 datoT = "";
                 mostrarEnPantalla(texto);
                 datoT = dataIn.readLine();
@@ -113,11 +115,14 @@ public class Leer {
                     error = false;
                 } else {
                     mostrarEnPantalla("Por favor, vuelve a introducir el dato, no es un valor posible. ");
+                    error = true;
                 }
             } catch (IOException e) {
                 mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
+                error = true;
             } catch (NumberFormatException e) {
                 mostrarEnPantalla("El dato introducido no es entero.");
+                error = true;
             } catch (PatternSyntaxException e) {
                 mostrarEnPantalla("La expresi�n regular no es correcta.");
                 System.exit(0);
@@ -131,17 +136,20 @@ public class Leer {
      * @return dato - Double tecleado
      */
     static public double pedirDouble(final String texto) {
+        BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
         double dato = 0;
         boolean error = true;
         while (error) {
-            try(BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in))) {
+            try {
                 mostrarEnPantalla(texto);
                 dato = Double.parseDouble(dataIn.readLine());
                 error = false;
             } catch (IOException e) {
                 mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
+                error = true;
             } catch (NumberFormatException e) {
                 mostrarEnPantalla("El dato introducido no es decimal.");
+                error = true;
             }
         }
         return dato;
@@ -153,6 +161,7 @@ public class Leer {
      * @return dato - Double tecleado
      */
     static public Double pedirDouble(final String texto, String regex) {
+        BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
         Double dato = null;
         boolean error = true;
         String datoT = "";
@@ -160,7 +169,7 @@ public class Leer {
             regex = "^-?\\d+([.]\\d*)?$";
         }
         while (error) {
-            try (BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in))) {
+            try {
                 datoT = "";
                 mostrarEnPantalla(texto);
                 datoT = dataIn.readLine();
@@ -169,11 +178,14 @@ public class Leer {
                     error = false;
                 } else {
                     mostrarEnPantalla("Por favor, vuelve a introducir el dato, no es un valor posible. ");
+                    error = true;
                 }
             } catch (IOException e) {
                 mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
+                error = true;
             } catch (NumberFormatException e) {
                 mostrarEnPantalla("El dato introducido no es decimal.");
+                error = true;
             } catch (PatternSyntaxException e) {
                 mostrarEnPantalla("La expresi�n regular no es correcta.");
                 System.exit(0);
@@ -187,17 +199,20 @@ public class Leer {
      * @return dato - Float tecleado
      */
     static public float pedirFloat(final String texto) {
+        BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
         float dato = 0;
         boolean error = true;
         while (error) {
-            try (BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in))){
+            try {
                 mostrarEnPantalla(texto);
                 dato = Float.parseFloat(dataIn.readLine());
                 error = false;
             } catch (IOException e) {
                 mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
+                error = true;
             } catch (NumberFormatException e) {
                 mostrarEnPantalla("El dato introducido no es decimal.");
+                error = true;
             }
         }
         return dato;
@@ -209,6 +224,7 @@ public class Leer {
      * @return dato - Float tecleado
      */
     static public Float pedirFloat(final String texto, String regex) {
+        BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
         Float dato = null;
         boolean error = true;
         String datoT = "";
@@ -216,7 +232,7 @@ public class Leer {
             regex = "^-?\\d+([.]\\d*)?$";
         }
         while (error) {
-            try (BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in))){
+            try {
                 datoT = "";
                 mostrarEnPantalla(texto);
                 datoT = dataIn.readLine();
@@ -225,6 +241,7 @@ public class Leer {
                     error = false;
                 } else {
                     mostrarEnPantalla("Por favor, vuelve a introducir el dato, no es un valor posible. ");
+                    error = true;
                 }
             } catch (IOException e) {
                 mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
